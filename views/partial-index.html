@@ -1,0 +1,23 @@
+
+<form>
+    ${surveyData.map(element => {
+        return (`
+        <div class="field columns">
+            <label class="label column">${element.name}</label>
+            <div class="control column is-four-fifths">
+                ${statusData.map(status => {
+                    return (`
+                    <label ${element.title === status.title ? `class="button is-outlined is-dark"` : `class="button"`}>
+                        <input type="radio" name="${element.name}"
+                        value="${status.id}" ${element.title === status.title ? `checked` : ``}>
+                    ${status.title}</label>
+                    `)
+                }).join('')}
+            </div>
+        </div>
+        `)
+    }).join('')}
+    <div class="control">
+        <button class="button is-primary">Submit</button>
+    </div>
+</form>
